@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>DMN Prototype</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="command-palette" hidden>
+      <input type="search" placeholder="Enter a command..." />
+
+      <div class="command-palette-inner">
+        <button type="button" data-event="insertinputleft">
+          Insert input left <kbd>⇧ + ←</kbd>
+        </button>
+        <button type="button" data-event="insertinputright">
+          Insert input right <kbd>⇧ + →</kbd>
+        </button>
+        <button type="button" data-event="insertruleabove">
+          Insert rule above <kbd>⇧ + ↑</kbd>
+        </button>
+        <button type="button" data-event="insertrulebelow">
+          Insert rule below <kbd>⇧ + ↓</kbd>
+        </button>
+        <button type="button" data-event="deleterule">
+          Delete rule <kbd>⇧ + R</kbd>
+        </button>
+        <button type="button" data-event="deleteinput">
+          Delete input <kbd>⇧ + I</kbd>
+        </button>
+      </div>
+    </div>
+
+    <table>
+      <caption>
+        <span>Consultant Decision</span>
+        <code>Decision_189w819</code>
+      </caption>
+      <thead>
+        <tr>
+          <th rowspan="2"><b>U</b></th>
+          <th colspan="2" data-col="input"><b>Input</b></th>
+          <th data-col="output"><b>Output</b></th>
+          <th rowspan="2"><b>Annotation</b></th>
+        </tr>
+        <tr>
+          <th data-clickable>Language <code>(string)</code></th>
+          <th data-clickable>Workshop <code>(string)</code></th>
+          <th data-clickable>Consultant <code>(string)</code></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td data-clickable>English</td>
+          <td data-clickable>Developer Training</td>
+          <td data-clickable>Stuart</td>
+          <td data-clickable>-</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td data-active data-clickable>German</td>
+          <td data-clickable>Proof of Concept, Developer Training</td>
+          <td data-clickable>Belle</td>
+          <td data-clickable>-</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td data-clickable>German</td>
+          <td data-clickable>Analyst Training</td>
+          <td data-clickable>Stevie</td>
+          <td data-clickable>-</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td data-clickable>English</td>
+          <td data-clickable>Proof of Concept</td>
+          <td data-clickable>Stevie</td>
+          <td data-clickable>-</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="legend">
+      <ul>
+        <li><kbd>⇧ + P:</kbd> Toggle Command Palette</li>
+        <li><kbd>⇧ + ↓:</kbd> Insert rule below</li>
+        <li><kbd>⇧ + ↑:</kbd> Insert rule above</li>
+        <li><kbd>⇧ + ←:</kbd> Insert input left</li>
+        <li><kbd>⇧ + →:</kbd> Insert input right</li>
+        <li><kbd>⇧ + R:</kbd> Delete rule</li>
+        <li><kbd>⇧ + I:</kbd> Delete input</li>
+      </ul>
+    </div>
+
+    <script src="/script.js" type="module"></script>
+  </body>
+</html>
