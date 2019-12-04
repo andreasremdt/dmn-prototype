@@ -22,6 +22,10 @@ import "./help.js";
       return;
     }
 
+    if (evt.metaKey) {
+      store.isMetaKeyEnabled = true;
+    }
+
     if (evt.key == "Escape") {
       closeEditing(false);
     } else if (evt.key == "Enter") {
@@ -123,7 +127,9 @@ import "./help.js";
     }
 
     if (isClickable(evt.target)) {
-      removeEditingAttributes();
+      if (!store.isMetaKeyEnabled) {
+        removeEditingAttributes();
+      }
 
       setActive(evt.target);
     }
@@ -189,6 +195,7 @@ import "./help.js";
   }
 
   window.addEventListener("keydown", handleKeyPress);
+  window.addEventListener("keyup", () => (store.isMetaKeyEnabled = false));
   window.addEventListener("click", handleClick);
   window.addEventListener("dblclick", handleDblClick);
 })();
