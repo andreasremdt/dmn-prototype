@@ -106,7 +106,36 @@
     row.remove();
   });
 
-  window.addEventListener("changehitpolicy", function() {});
+  window.addEventListener("hitpolicyunique", function() {
+    document.getElementById("hit-policy-select").children[0].selected =
+      "selected";
+  });
+
+  window.addEventListener("hitpolicyfirst", function() {
+    document.getElementById("hit-policy-select").children[1].selected =
+      "selected";
+  });
+
+  window.addEventListener("hitpolicypriority", function() {
+    document.getElementById("hit-policy-select").children[2].selected =
+      "selected";
+  });
+  window.addEventListener("hitpolicyany", function() {
+    document.getElementById("hit-policy-select").children[3].selected =
+      "selected";
+  });
+  window.addEventListener("hitpolicycollect", function() {
+    document.getElementById("hit-policy-select").children[4].selected =
+      "selected";
+  });
+  window.addEventListener("hitpolicyrorder", function() {
+    document.getElementById("hit-policy-select").children[5].selected =
+      "selected";
+  });
+  window.addEventListener("hitpolicyoorder", function() {
+    document.getElementById("hit-policy-select").children[7].selected =
+      "selected";
+  });
 })();
 
 /***********************/

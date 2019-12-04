@@ -96,7 +96,7 @@ th {
   overflow-x: auto;
 }
 
-.command-palette-inner > button {
+.command-palette button {
   width: 100%;
   border: none;
   font: inherit;
@@ -109,14 +109,14 @@ th {
   align-items: center;
 }
 
-.command-palette-inner > button > kbd:first-child {
+.command-palette button > kbd:first-child {
   margin-left: auto;
   font-size: 12px;
   margin-right: 2px;
 }
 
-.command-palette-inner > button:hover,
-.command-palette-inner > button[data-selected] {
+.command-palette button:hover,
+.command-palette button[data-selected] {
   background-color: #e0e0e0;
 }
 

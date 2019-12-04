@@ -35,11 +35,25 @@
       }
 
       if (evt.target.closest("button")) {
-        window.dispatchEvent(
-          new Event(evt.target.closest("button").getAttribute("data-event"))
-        );
+        if (evt.target.closest("button").getAttribute("data-event")) {
+          window.dispatchEvent(
+            new Event(evt.target.closest("button").getAttribute("data-event"))
+          );
 
-        hideCommandPalette();
+          hideCommandPalette();
+        }
+
+        if (evt.target.closest("button").getAttribute("data-target")) {
+          var target = palette.querySelector(
+            evt.target.closest("button").getAttribute("data-target")
+          );
+
+          target.removeAttribute("hidden");
+          palette
+            .querySelector(".command-palette-inner")
+            .setAttribute("hidden", true);
+          target.firstElementChild.setAttribute("data-selected", true);
+        }
       }
     }
   }
@@ -47,9 +61,25 @@
   function triggerEvent() {
     var current = palette.querySelector("button[data-selected]");
 
-    window.dispatchEvent(new Event(current.getAttribute("data-event")));
+    if (current.getAttribute("data-event")) {
+      window.dispatchEvent(new Event(current.getAttribute("data-event")));
 
-    hideCommandPalette();
+      hideCommandPalette();
+    }
+
+    if (current.getAttribute("data-target")) {
+      palette.firstElementChild.value = "";
+
+      filterDisplayResults();
+
+      var target = palette.querySelector(current.getAttribute("data-target"));
+
+      target.removeAttribute("hidden");
+      palette
+        .querySelector(".command-palette-inner")
+        .setAttribute("hidden", true);
+      target.firstElementChild.setAttribute("data-selected", true);
+    }
   }
 
   function filterDisplayResults() {
@@ -124,6 +154,11 @@
       .removeAttribute("data-selected");
     window.__commandPaletteIsOpen = false;
     palette.firstElementChild.value = "";
+    palette.querySelector(".command-palette-inner").removeAttribute("hidden");
+
+    Array.from(document.querySelectorAll(".submenu")).forEach(menu =>
+      menu.setAttribute("hidden", true)
+    );
   }
 
   window.addEventListener("keyup", handleKeyDown);

@@ -13,16 +13,16 @@
 
       <div class="command-palette-inner">
         <button type="button" data-event="insertinputleft">
-          Insert input left <kbd>⇧</kbd> <kbd>←</kbd>
+          Insert input left <kbd>⌘</kbd> <kbd>←</kbd>
         </button>
         <button type="button" data-event="insertinputright">
-          Insert input right <kbd>⇧</kbd> <kbd>→</kbd>
+          Insert input right <kbd>⌘</kbd> <kbd>→</kbd>
         </button>
         <button type="button" data-event="insertruleabove">
-          Insert rule above <kbd>⇧</kbd> <kbd>↑</kbd>
+          Insert rule above <kbd>⌘</kbd> <kbd>↑</kbd>
         </button>
         <button type="button" data-event="insertrulebelow">
-          Insert rule below <kbd>⇧</kbd> <kbd>↓</kbd>
+          Insert rule below <kbd>⌘</kbd> <kbd>↓</kbd>
         </button>
         <button type="button" data-event="deleterule">
           Delete rule <kbd>⇧</kbd> <kbd>R</kbd>
@@ -39,8 +39,32 @@
         <button type="button" data-event="cutcellcontent">
           Cut cell content <kbd>⌘</kbd> <kbd>X</kbd>
         </button>
-        <button type="button" data-event="changehitpolicy">
+        <button type="button" data-target="#hit-policy">
           Change hit policy
+        </button>
+      </div>
+
+      <div id="hit-policy" class="submenu" hidden>
+        <button type="button" data-event="hitpolicyunique">
+          Unique
+        </button>
+        <button type="button" data-event="hitpolicyfirst">
+          First
+        </button>
+        <button type="button" data-event="hitpolicypriority">
+          Priority
+        </button>
+        <button type="button" data-event="hitpolicyany">
+          Any
+        </button>
+        <button type="button" data-event="hitpolicycollect">
+          Collect
+        </button>
+        <button type="button" data-event="hitpolicyrorder">
+          Rule order
+        </button>
+        <button type="button" data-event="hitpolicyoorder">
+          Output order
         </button>
       </div>
     </div>
@@ -50,7 +74,7 @@
         <span>Consultant Decision</span>
         <label>
           Hit policy
-          <select id="hit-policy">
+          <select id="hit-policy-select">
             <option value="u">Unique</option>
             <option value="f">First</option>
             <option value="p">Priority</option>
