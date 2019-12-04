@@ -13,34 +13,31 @@
 
       <div class="command-palette-inner">
         <button type="button" data-event="insertinputleft">
-          Insert input left <kbd>⇧ + ←</kbd>
+          Insert input left <kbd>⇧</kbd> <kbd>←</kbd>
         </button>
         <button type="button" data-event="insertinputright">
-          Insert input right <kbd>⇧ + →</kbd>
+          Insert input right <kbd>⇧</kbd> <kbd>→</kbd>
         </button>
         <button type="button" data-event="insertruleabove">
-          Insert rule above <kbd>⇧ + ↑</kbd>
+          Insert rule above <kbd>⇧</kbd> <kbd>↑</kbd>
         </button>
         <button type="button" data-event="insertrulebelow">
-          Insert rule below <kbd>⇧ + ↓</kbd>
+          Insert rule below <kbd>⇧</kbd> <kbd>↓</kbd>
         </button>
         <button type="button" data-event="deleterule">
-          Delete rule <kbd>⇧ + R</kbd>
+          Delete rule <kbd>⇧</kbd> <kbd>R</kbd>
         </button>
         <button type="button" data-event="deleteinput">
-          Delete input <kbd>⇧ + I</kbd>
+          Delete input <kbd>⇧</kbd> <kbd>I</kbd>
         </button>
         <button type="button" data-event="copycellconten">
-          Copy cell content <kbd>⌘ + C</kbd>
+          Copy cell content <kbd>⌘</kbd> <kbd>C</kbd>
         </button>
         <button type="button" data-event="pastecellcontent">
-          Paste cell content <kbd>⌘ + V</kbd>
+          Paste cell content <kbd>⌘</kbd> <kbd>V</kbd>
         </button>
         <button type="button" data-event="cutcellcontent">
-          Cut cell content <kbd>⌘ + X</kbd>
-        </button>
-        <button type="button" data-event="deletecellcontent">
-          Delete cell content <kbd>⌫</kbd>
+          Cut cell content <kbd>⌘</kbd> <kbd>X</kbd>
         </button>
       </div>
     </div>
@@ -48,13 +45,25 @@
     <table>
       <caption>
         <span>Consultant Decision</span>
-        <code>Decision_189w819</code>
+        <label>
+          Hit policy
+          <select>
+            <option value="u">Unique</option>
+            <option value="f">First</option>
+            <option value="p">Priority</option>
+            <option value="a">Any</option>
+            <option value="c">Collect</option>
+            <option value="ro">Rule order</option>
+            <option value="oo">Output order</option>
+          </select>
+        </label>
       </caption>
       <thead>
         <tr>
-          <th rowspan="2"><b>U</b></th>
-          <th colspan="2" data-col="input"><b>Input</b></th>
-          <th data-col="output"><b>Output</b></th>
+          <th rowspan="2"></th>
+          <th data-col="input">When</th>
+          <th data-col="input">And</th>
+          <th data-col="output">Then</th>
           <th rowspan="2"><b>Annotation</b></th>
         </tr>
         <tr>
@@ -95,20 +104,28 @@
       </tbody>
     </table>
 
-    <div class="legend">
-      <ul>
-        <li><kbd>⇧ + P:</kbd> Toggle Command Palette</li>
-        <li><kbd>⇧ + ↓:</kbd> Insert rule below</li>
-        <li><kbd>⇧ + ↑:</kbd> Insert rule above</li>
-        <li><kbd>⇧ + ←:</kbd> Insert input left</li>
-        <li><kbd>⇧ + →:</kbd> Insert input right</li>
-        <li><kbd>⇧ + R:</kbd> Delete rule</li>
-        <li><kbd>⇧ + I:</kbd> Delete input</li>
-        <li><kbd>⌘ + C:</kbd> Copy cell content</li>
-        <li><kbd>⌘ + V:</kbd> Paste cell content</li>
-        <li><kbd>⌘ + X:</kbd> Cut cell content</li>
-        <li><kbd>⌫:</kbd> Delete cell content</li>
-      </ul>
+    <p>
+      Press <kbd>Ctrl</kbd> <kbd>P</kbd> to show command palette.<br />
+      Press <kbd>Ctrl</kbd> <kbd>H</kbd> to show keyboard shortcuts.
+    </p>
+
+    <div class="keyboard-shortcuts" hidden>
+      <div class="keyboard-shortcuts-inner">
+        <button type="button" title="Close keyboard shortcuts">&times;</button>
+        <ul>
+          <li><kbd>⇧</kbd> <kbd>P</kbd> Toggle Command Palette</li>
+          <li><kbd>⌘</kbd> <kbd>↓</kbd> Insert rule below</li>
+          <li><kbd>⌘</kbd> <kbd>↑</kbd> Insert rule above</li>
+          <li><kbd>⌘</kbd> <kbd>←</kbd> Insert input left</li>
+          <li><kbd>⌘</kbd> <kbd>→</kbd> Insert input right</li>
+          <li><kbd>⇧</kbd> <kbd>R</kbd> Delete rule</li>
+          <li><kbd>⇧</kbd> <kbd>I</kbd> Delete input</li>
+          <li><kbd>⌘</kbd> <kbd>C</kbd> Copy cell content</li>
+          <li><kbd>⌘</kbd> <kbd>V</kbd> Paste cell content</li>
+          <li><kbd>⌘</kbd> <kbd>X</kbd> Cut cell content</li>
+          <li><kbd>⌫</kbd> Delete cell content</li>
+        </ul>
+      </div>
     </div>
 
     <script src="/script.js" type="module"></script>

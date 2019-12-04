@@ -1,5 +1,6 @@
 import "./command-palette.js";
 import "./event-handlers.js";
+import "./help.js";
 
 (function() {
   "use strict";
@@ -30,7 +31,7 @@ import "./event-handlers.js";
     } else if (
       ["ArrowRight", "ArrowLeft", "ArrowDown", "ArrowUp"].includes(evt.key)
     ) {
-      if (evt.shiftKey) {
+      if (evt.metaKey) {
         window.dispatchEvent(new Event(KEY_MAPPINGS[evt.key]));
       } else {
         navigateTo(evt.key);

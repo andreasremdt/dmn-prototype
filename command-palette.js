@@ -7,7 +7,7 @@
   var buttons = palette.querySelectorAll("button");
 
   function handleKeyDown(evt) {
-    if (evt.key == "P" && evt.shiftKey) {
+    if (evt.key == "p" && evt.ctrlKey) {
       toggleCommandPalette();
     }
 
@@ -31,6 +31,14 @@
   function handleClick(evt) {
     if (window.__commandPaletteIsOpen) {
       if (!evt.target.closest(".command-palette")) {
+        hideCommandPalette();
+      }
+
+      if (evt.target.closest("button")) {
+        window.dispatchEvent(
+          new Event(evt.target.closest("button").getAttribute("data-event"))
+        );
+
         hideCommandPalette();
       }
     }
@@ -83,6 +91,7 @@
 
       if (next) {
         next.setAttribute("data-selected", true);
+        next.scrollIntoView(false);
         availableButtons[index].removeAttribute("data-selected");
       }
     } else {
@@ -90,6 +99,7 @@
 
       if (prev) {
         prev.setAttribute("data-selected", true);
+        prev.scrollIntoView(true);
         availableButtons[index].removeAttribute("data-selected");
       }
     }
