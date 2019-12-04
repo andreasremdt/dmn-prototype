@@ -25,6 +25,8 @@ import "./event-handlers.js";
       closeEditing(false);
     } else if (evt.key == "Enter") {
       handleEnter(evt);
+    } else if (evt.key == "Backspace") {
+      clearCell();
     } else if (
       ["ArrowRight", "ArrowLeft", "ArrowDown", "ArrowUp"].includes(evt.key)
     ) {
@@ -35,6 +37,17 @@ import "./event-handlers.js";
       }
     } else if (evt.shiftKey) {
       window.dispatchEvent(new Event(KEY_MAPPINGS[evt.key]));
+    }
+
+    // COPY + PASTE
+    if (evt.metaKey) {
+      if (evt.key == "c") {
+        copyValue();
+      } else if (evt.key == "v") {
+        pasteValue();
+      } else if (evt.key == "x") {
+        copyValue(true);
+      }
     }
   }
 
@@ -56,6 +69,22 @@ import "./event-handlers.js";
     }
   }
 
+  function copyValue(cut = false) {
+    var active = getCurrentActive(table);
+
+    store.clipbloard = active.textContent;
+
+    if (cut) {
+      active.textContent = "-";
+    }
+  }
+
+  function pasteValue() {
+    var active = getCurrentActive(table);
+
+    active.textContent = store.clipbloard;
+  }
+
   function handleEnter(evt) {
     var editing = getCurrentEditing(table);
     var active = getCurrentActive(table);
@@ -67,6 +96,14 @@ import "./event-handlers.js";
 
       enterEditing(active);
     }
+  }
+
+  function clearCell() {
+    if (getCurrentEditing(table)) {
+      return;
+    }
+
+    getCurrentActive(table).textContent = "-";
   }
 
   function enterEditing(element) {
