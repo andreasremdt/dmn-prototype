@@ -39,6 +39,9 @@
         <button type="button" data-event="cutcellcontent">
           Cut cell content <kbd>⌘</kbd> <kbd>X</kbd>
         </button>
+        <button type="button" data-event="changehitpolicy">
+          Change hit policy
+        </button>
       </div>
     </div>
 
@@ -47,7 +50,7 @@
         <span>Consultant Decision</span>
         <label>
           Hit policy
-          <select>
+          <select id="hit-policy">
             <option value="u">Unique</option>
             <option value="f">First</option>
             <option value="p">Priority</option>
@@ -58,18 +61,24 @@
           </select>
         </label>
       </caption>
+      <colgroup>
+        <col />
+        <col span="2" class="input" />
+        <col span="1" class="output" />
+        <col />
+      </colgroup>
       <thead>
         <tr>
           <th rowspan="2"></th>
-          <th data-col="input">When</th>
-          <th data-col="input">And</th>
-          <th data-col="output">Then</th>
-          <th rowspan="2"><b>Annotation</b></th>
+          <th scope="col" data-col="input">When</th>
+          <th scope="col" data-col="input">And</th>
+          <th scope="col" data-col="output">Then</th>
+          <th scope="col" rowspan="2"><b>Annotation</b></th>
         </tr>
         <tr>
-          <th data-clickable>Language <code>(string)</code></th>
-          <th data-clickable>Workshop <code>(string)</code></th>
-          <th data-clickable>Consultant <code>(string)</code></th>
+          <th scope="col" data-clickable>Language <code>(string)</code></th>
+          <th scope="col" data-clickable>Workshop <code>(string)</code></th>
+          <th scope="col" data-clickable>Consultant <code>(string)</code></th>
         </tr>
       </thead>
       <tbody>
@@ -113,7 +122,7 @@
       <div class="keyboard-shortcuts-inner">
         <button type="button" title="Close keyboard shortcuts">&times;</button>
         <ul>
-          <li><kbd>⇧</kbd> <kbd>P</kbd> Toggle Command Palette</li>
+          <li><kbd>Ctrl</kbd> <kbd>P</kbd> Toggle Command Palette</li>
           <li><kbd>⌘</kbd> <kbd>↓</kbd> Insert rule below</li>
           <li><kbd>⌘</kbd> <kbd>↑</kbd> Insert rule above</li>
           <li><kbd>⌘</kbd> <kbd>←</kbd> Insert input left</li>

@@ -35,11 +35,12 @@
 
     var head = table.querySelector("thead tr:last-child");
     var th = document.createElement("th");
+    th.scope = "col";
     th.textContent = "-";
     th.setAttribute("data-clickable", true);
     head.insertBefore(th, head.children[index - 1]);
 
-    updateSpan(table, true);
+    updateHead(table, index, true);
   });
 
   window.addEventListener("insertinputright", function() {
@@ -57,10 +58,11 @@
     var head = table.querySelector("thead tr:last-child");
     var th = document.createElement("th");
     th.textContent = "-";
+    th.scope = "col";
     th.setAttribute("data-clickable", true);
     head.insertBefore(th, head.children[index]);
 
-    updateSpan(table, true);
+    updateHead(table, index, true);
   });
 
   window.addEventListener("deleteinput", function() {
@@ -77,10 +79,15 @@
       row.children[index].remove();
     });
 
-    var head = table.querySelector("thead tr:last-child");
-    head.children[index].remove();
+    var col = document.querySelector(
+      `col.${
+        table.querySelector("thead tr:first-child").children[index].dataset.col
+      }`
+    );
+    col.span = Number(col.span) - 1;
 
-    updateSpan(table, false);
+    table.querySelector("thead tr:first-child").children[index].remove();
+    table.querySelector("thead tr:last-child").children[index].remove();
   });
 
   window.addEventListener("deleterule", function() {
@@ -98,6 +105,8 @@
     next.setAttribute("data-active", true);
     row.remove();
   });
+
+  window.addEventListener("changehitpolicy", function() {});
 })();
 
 /***********************/
@@ -105,16 +114,19 @@ function getCurrentActive(table) {
   return table.querySelector("[data-active]");
 }
 
-function updateSpan(table, increment = true) {
-  var element = table.querySelector('[data-col="input"]');
+function updateHead(table, index) {
+  var heads = table.querySelectorAll("thead tr:first-child th");
+  var th = document.createElement("th");
+  th.textContent = "And";
+  th.scope = "col";
+  th.setAttribute("data-col", heads[index].dataset.col);
 
-  var value = Number(element.getAttribute("colspan"));
+  table
+    .querySelector("thead tr:first-child")
+    .insertBefore(th, heads[index + 1]);
 
-  if (increment) {
-    element.setAttribute("colspan", value + 1);
-  } else {
-    element.setAttribute("colspan", value - 1);
-  }
+  var col = document.querySelector(`col.${heads[index].dataset.col}`);
+  col.span = Number(col.span) + 1;
 }
 
 function cleanValues(row) {
