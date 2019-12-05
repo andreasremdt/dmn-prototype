@@ -13,8 +13,8 @@ import "./help.js";
     ArrowLeft: "insertinputleft",
     ArrowDown: "insertrulebelow",
     ArrowUp: "insertruleabove",
-    R: "deleterule",
-    I: "deleteinput"
+    r: "deleterule",
+    i: "deleteinput"
   };
 
   function handleKeyPress(evt) {
@@ -40,7 +40,7 @@ import "./help.js";
       } else {
         navigateTo(evt.key);
       }
-    } else if (evt.shiftKey) {
+    } else if (evt.ctrlKey) {
       window.dispatchEvent(new Event(KEY_MAPPINGS[evt.key]));
     }
 
@@ -123,6 +123,11 @@ import "./help.js";
 
   function handleClick(evt) {
     if (isEditing(evt.target)) {
+      return;
+    }
+
+    if (!evt.target.closest("table")) {
+      removeEditingAttributes();
       return;
     }
 
@@ -210,7 +215,7 @@ function isEditing(element) {
 }
 
 function getCurrentEditing(table) {
-  return table.querySelector("[contenteditable]");
+  return table.querySelector("[contenteditable]:not(span)");
 }
 
 function getCurrentActive(table) {
