@@ -1,6 +1,7 @@
 import "./command-palette.js";
 import "./event-handlers.js";
 import "./help.js";
+import "./context-menu.js";
 
 (function() {
   "use strict";
@@ -207,6 +208,7 @@ import "./help.js";
   window.addEventListener("keyup", () => (store.isMetaKeyEnabled = false));
   window.addEventListener("click", handleClick);
   window.addEventListener("dblclick", handleDblClick);
+  window.addEventListener("contextmenu", handleClick);
 })();
 
 /******************* HELPERS *************************/
