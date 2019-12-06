@@ -166,6 +166,10 @@ import "./help.js";
       return;
     }
 
+    if (!getCurrentActive(table)) {
+      return;
+    }
+
     var active = getCurrentActive(table);
     var next = null;
 

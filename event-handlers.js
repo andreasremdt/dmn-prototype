@@ -35,9 +35,13 @@
 
     var head = table.querySelector("thead tr:last-child");
     var th = document.createElement("th");
+    var span = document.createElement("span");
     th.scope = "col";
-    th.textContent = "-";
-    th.setAttribute("data-clickable", true);
+    th.className = "th";
+    span.textContent = "Untitled 1";
+    span.setAttribute("contenteditable", true);
+    th.appendChild(span);
+    th.appendChild(createDropdown());
     head.insertBefore(th, head.children[index - 1]);
 
     updateHead(table, index, true);
@@ -57,9 +61,13 @@
 
     var head = table.querySelector("thead tr:last-child");
     var th = document.createElement("th");
-    th.textContent = "-";
+    var span = document.createElement("span");
     th.scope = "col";
-    th.setAttribute("data-clickable", true);
+    th.className = "th";
+    span.textContent = "Untitled 1";
+    span.setAttribute("contenteditable", true);
+    th.appendChild(span);
+    th.appendChild(createDropdown());
     head.insertBefore(th, head.children[index]);
 
     updateHead(table, index, true);
@@ -166,4 +174,19 @@ function cleanValues(row) {
       child.removeAttribute("data-active");
     }
   });
+}
+
+function createDropdown() {
+  var select = document.createElement("select");
+
+  select.innerHTML = `
+    <option value="string">String</option>
+    <option value="boolean">Boolean</option>
+    <option value="number">Integer</option>
+    <option value="long">Long</option>
+    <option value="double">Double</option>
+    <option value="date">Date</option>
+  `;
+
+  return select;
 }
