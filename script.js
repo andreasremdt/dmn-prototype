@@ -127,9 +127,17 @@ import "./context-menu.js";
       return;
     }
 
-    if (!evt.target.closest("table")) {
-      removeEditingAttributes();
-      return;
+    // if (!evt.target.closest("table")) {
+    //   removeEditingAttributes();
+    //   return;
+    // }
+
+    if (evt.target.hasAttribute("data-index")) {
+      selectRow(evt.target);
+    }
+
+    if (evt.target.tagName == "TH") {
+      selectColumn(evt.target);
     }
 
     if (isClickable(evt.target)) {
@@ -139,6 +147,24 @@ import "./context-menu.js";
 
       setActive(evt.target);
     }
+  }
+
+  function selectRow(target) {
+    Array.from(target.parentNode.children).forEach(td => {
+      setActive(td);
+    });
+  }
+
+  function selectColumn(target) {
+    var index = Array.from(target.parentNode.children).indexOf(target);
+    var trs = document.querySelectorAll("tbody tr");
+
+    setActive(target);
+    setActive(target.parentNode.nextElementSibling.children[index - 1]);
+
+    Array.from(trs).forEach(function(tr) {
+      setActive(tr.children[index]);
+    });
   }
 
   function handleDblClick(evt) {

@@ -79,7 +79,7 @@ thead tr:first-child th {
   box-shadow: 0 0 4px tomato;
 }
 
-[contenteditable] {
+td[contenteditable] {
   background-color: white;
 }
 
